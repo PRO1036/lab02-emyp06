@@ -40,24 +40,40 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
 ### Exercise 2
 
 ```{r plastic-waste-density}
-ggplot(plastic_waste, aes(x = plastic_waste_per_cap)) +
-  geom_density()
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, colour = continent,
+                          fill = continent)) +
+  geom_density(adjust = 1,
+               alpha = 0.4) +
+  labs(
+    x = "Plastic_waste_per_cap", 
+    y = "Density",
+    title = "Quantité de gaspillage de plastique",
+    fill = "continent"
+  )
 ```
 
-Réponse à la question...
+Les réglages de couleur (color et fill) ne se trouvent pas au même endroit que celui de la transparence (alpha), car ils sont liés à l'esthétique des données et du graphique. Tandis que, (alpha) est indépendant aux données. 
 
 ### Exercise 3
 
 Boxplot:
 
 ```{r plastic-waste-boxplot}
-# insert code here
+ggplot(plastic_waste, aes( x = continent, y = plastic_waste_per_cap)) +
+  geom_boxplot() +
+  labs( 
+    x = "Continent",
+    y = "plastic_waste_per_cap", 
+    title = "Quantité de gaspillage de plastique",
+    subtitles = "par continent"
+    )
 ```
 
 Violin plot:
 
 ```{r plastic-waste-violin}
-# insert code here
+ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap )) +
+  geom_violin()
 ```
 
 Réponse à la question...
@@ -66,7 +82,10 @@ Réponse à la question...
 
 
 ```{r plastic-waste-mismanaged}
-# insert code here
+ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_waste_per_cap, colour = continent)) +
+  geom_point () +
+  labs(title = "Relation entre la quantité de déchet vs celle non-gérée", y = "nombre de déchets plastiques non gérés par habitant")
+
 ```
 
 Réponse à la question...
@@ -89,5 +108,5 @@ Réponse à la question...
 Recréez la visualisation:
 
 ```{r recreate-viz}
-# insert code here
+
 ```
