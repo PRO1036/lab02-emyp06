@@ -76,7 +76,7 @@ ggplot(plastic_waste, aes(x = continent, y = plastic_waste_per_cap )) +
   geom_violin()
 ```
 
-Réponse à la question...
+Il nous permet d'avoir une meilleure visualisation des données.
 
 ### Exercise 4
 
@@ -88,25 +88,33 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_wast
 
 ```
 
-Réponse à la question...
+L'Asie sont ceux qui ont le plus de déchet mal gérés 
 
 ### Exercise 5
 
 
 ```{r plastic-waste-population-total}
-# insert code here
+ggplot(plastic_waste, aes(x = total_pop, y = plastic_waste_per_cap, colour = continent)) + 
+  geom_point () 
 ```
 
 ```{r plastic-waste-population-coastal}
-# insert code here
+ggplot(plastic_waste, aes(x = coastal_pop, y = plastic_waste_per_cap, colour = continent)) +
+  geom_point ()
 ```
 
-Réponse à la question...
+Il semble avoir une plus forte relation entre les variables du second graphique. 
 
 ## Conclusion
 
 Recréez la visualisation:
 
 ```{r recreate-viz}
-
+plastic_waste_coastal <- plastic_waste %>%
+  mutate(coastal_pop_prop = coastal_pop / total_pop) %>%
+  filter(plastic_waste_per_cap < 3)
+ggplot(plastic_waste_coastal, aes(x = coastal_pop_prop, y = plastic_waste_per_cap, color = continent)) + 
+  geom_point() +
+  geom_smooth(aes(group = 1), method = "loess", color = "black", se = TRUE) +
+  labs(title = "Quantité de déchets plastiques vs proportion de la population cotière", x = "Proportion de la population cotière (coastal/total population)", y = "Nombre de déchets plastiques par habitant", color = "continent")
 ```
