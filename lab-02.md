@@ -102,7 +102,9 @@ ggplot(plastic_waste, aes(x = plastic_waste_per_cap, y = mismanaged_plastic_wast
 
 ![](lab-02_files/figure-gfm/plastic-waste-mismanaged-1.png)<!-- -->
 
-L’Asie sont ceux qui ont le plus de déchet mal gérés
+Ceux qui ont le moins de déchet, gère moins bien leurs déchets que ceux
+qui en ont plus. L’Asie sont ceux qui gèrent le moins bien leurs déchets
+tandis que l’Océanie sont ceux qui les gèrent le mieux.
 
 ### Exercise 5
 
